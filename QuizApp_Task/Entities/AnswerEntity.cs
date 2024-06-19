@@ -16,7 +16,7 @@ namespace QuizApp_Task.Entities
         [Required]
         public bool IsCorrect { get; set; } = false;
 
-        public long QuestionId { get; set; }
+        public Guid QuestionId { get; set; }
         public QuestionEntity QuestionEntity { get; set; } = null!;
 
     }

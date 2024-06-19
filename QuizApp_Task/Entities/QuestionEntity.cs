@@ -15,7 +15,7 @@ namespace QuizApp_Task.Entities
         [Required]
         public string QuestionType { get; set; }
 
-        public long QuizId { get; set; }
+        public Guid QuizId { get; set; }
         public QuizEntity QuizEntity { get; set; } = null!;
 
         public ICollection<AnswerEntity> AnswerEntities { get; } = new List<AnswerEntity>();

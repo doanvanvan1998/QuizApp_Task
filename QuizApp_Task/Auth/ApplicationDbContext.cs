@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuizApp_Task.Entities;
+using System.Reflection.Emit;
 
 namespace QuizApp_Task.Auth
 {
@@ -7,7 +8,6 @@ namespace QuizApp_Task.Auth
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) {
         }
-        public DbSet<DemoEntity> tbl_demo { get; set; }
         public DbSet<QuizEntity> tbl_quiz { get; set; }
         public DbSet<QuestionEntity> tbl_question { get; set; }
         public DbSet<AnswerEntity> tbl_answer { get; set; }
