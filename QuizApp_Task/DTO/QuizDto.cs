@@ -7,5 +7,7 @@
         public string Description { get; set; }
         public int Duration { get; set; }
         public string ThumbnailUrl { get; set; }
+
+        public List<QuestionDto> QuestionDtos { get; set; }
     }
 }

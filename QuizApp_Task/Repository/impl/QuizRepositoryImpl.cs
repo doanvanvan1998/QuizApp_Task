@@ -43,7 +43,7 @@ namespace QuizApp_Task.Repository.impl
 
         public QuizEntity? GetById(Guid id)
         {
-            return _dataDb.tbl_quiz.FirstOrDefault(quiz => quiz.Id == id);
+            return _dataDb.tbl_quiz.Include(q => q.QuestionEntities).FirstOrDefault(quiz => quiz.Id == id);
         }
 
         public bool Update(QuizEntity entity)

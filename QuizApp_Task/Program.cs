@@ -20,9 +20,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(
 
 // For Repository
 builder.Services.AddScoped<IQuizRepository, QuizRepositoryImpl>();
+builder.Services.AddScoped<IQuestionRepository, QuestionRepositoryImpl>();
+builder.Services.AddScoped<IAnswerRepository, AnswerRepositoryImpl>();
 
 // For Service
 builder.Services.AddScoped<IQuizService, QuizServiceImpl>();
+builder.Services.AddScoped<IQuestionService, QuestionServiceImpl>();
+builder.Services.AddScoped<IAnswerService, AnswerServiceImpl>();
 
 // mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

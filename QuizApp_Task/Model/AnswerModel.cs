@@ -7,5 +7,6 @@ namespace QuizApp_Task.Model
         public string Content { get; set; }
 
         public bool IsCorrect { get; set; } = false;
+        public Guid QuestionId { get; set; }
     }
 }

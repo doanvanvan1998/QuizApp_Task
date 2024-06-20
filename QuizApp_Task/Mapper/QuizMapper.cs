@@ -10,7 +10,7 @@ namespace QuizApp_Task.Mapper
         public QuizMapper() {
 
             CreateMap<QuizModel, QuizEntity>();
-            CreateMap<QuizEntity, QuizDto>();
+            CreateMap<QuizEntity, QuizDto>().ForMember(dest => dest.QuestionDtos, opt => opt.MapFrom(src => src.QuestionEntities));
         }
     }
 }

@@ -9,6 +9,7 @@ namespace QuizApp_Task.DTO
         public string Content { get; set; }
 
         public string QuestionType { get; set; }
+        public List<AnswerDto> AnswerDtos { get; set; }
 
     }
 }
