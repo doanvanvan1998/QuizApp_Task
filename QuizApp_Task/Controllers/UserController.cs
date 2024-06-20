@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QuizApp_Task.DTO;
 using QuizApp_Task.Entities;
 using QuizApp_Task.Model;
+using System.Data;
 
 namespace QuizApp_Task.Controllers
 {
@@ -23,18 +25,30 @@ namespace QuizApp_Task.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {
-            var users = _userManager.Users.Select(user => new UserDto
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                DateOfBirth = user.DateOfBirth,
-                Avatar = user.Avatar,
-                IsActive = user.IsActive
-            });
+            var users = await _userManager.Users.ToListAsync(); // Chuyển đổi người dùng thành danh sách bất đồng bộ
 
-            return Ok(users);
+            var userDtos = new List<UserDto>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user); // Sử dụng await để lấy danh sách các vai trò
+
+                var userDto = new UserDto
+                {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    DateOfBirth = user.DateOfBirth,
+                    Avatar = user.Avatar,
+                    IsActive = user.IsActive,
+                    Roles = roles.ToList() // Chuyển đổi vai trò thành danh sách
+                };
+
+                userDtos.Add(userDto);
+            }
+
+            return Ok(userDtos);
         }
 
         [HttpGet("{id}")]
@@ -45,6 +59,7 @@ namespace QuizApp_Task.Controllers
             {
                 return NotFound();
             }
+            var roles = await _userManager.GetRolesAsync(user);
 
             var userDto = new UserDto
             {
@@ -54,7 +69,8 @@ namespace QuizApp_Task.Controllers
                 Email = user.Email,
                 DateOfBirth = user.DateOfBirth,
                 Avatar = user.Avatar,
-                IsActive = user.IsActive
+                IsActive = user.IsActive,
+                Roles = roles.ToList()
             };
 
             return Ok(userDto);
