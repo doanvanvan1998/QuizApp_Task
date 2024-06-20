@@ -18,6 +18,6 @@ namespace QuizApp_Task.Entities
 
         public Guid QuestionId { get; set; }
         public QuestionEntity QuestionEntity { get; set; } = null!;
-
+        public ICollection<UserAnswerEntity> UserAnswers { get; } = new List<UserAnswerEntity>();
     }
 }

@@ -1,16 +1,16 @@
-﻿using QuizApp_Task.Auth;
+﻿using QuizApp_Task.Data;
 
 namespace QuizApp_Task.Repository.impl
 {
     public class BaseRepository : IBaseRepository
     {
-        private readonly ApplicationDbContext _dataDb;
-        public BaseRepository(ApplicationDbContext dataDB)
+        private readonly QuizAppDbContext _dataDb;
+        public BaseRepository(QuizAppDbContext dataDB)
         {
             _dataDb = dataDB;
         }
 
-        public ApplicationDbContext DataDB { get; }
+        public QuizAppDbContext DataDB { get; }
 
         public void SaveChanges()
         {

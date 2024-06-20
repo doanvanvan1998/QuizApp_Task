@@ -19,5 +19,6 @@ namespace QuizApp_Task.Entities
         public QuizEntity QuizEntity { get; set; } = null!;
 
         public ICollection<AnswerEntity> AnswerEntities { get; } = new List<AnswerEntity>();
+        public ICollection<UserAnswerEntity> UserAnswers { get; } = new List<UserAnswerEntity>();
     }
 }

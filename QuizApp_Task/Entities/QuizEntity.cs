@@ -25,5 +25,6 @@ namespace QuizApp_Task.Entities
         public string ThumbnailUrl { get; set; }
 
         public ICollection<QuestionEntity> QuestionEntities { get; } = new List<QuestionEntity>();
+        public ICollection<UserQuizEntity> UserQuizzes { get; set; } = new List<UserQuizEntity>();
     }
 }

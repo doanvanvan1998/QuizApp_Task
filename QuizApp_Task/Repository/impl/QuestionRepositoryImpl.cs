@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using QuizApp_Task.Auth;
+using QuizApp_Task.Data;
 using QuizApp_Task.Entities;
 using QuizApp_Task.Service;
 
@@ -9,11 +9,11 @@ namespace QuizApp_Task.Repository.impl
 {
     public class QuestionRepositoryImpl : BaseRepository, IQuestionRepository
     {
-        private readonly ApplicationDbContext _dataDb;
+        private readonly QuizAppDbContext _dataDb;
         private readonly IMapper _mapper;
         private readonly IQuizRepository _quizRepository;
 
-        public QuestionRepositoryImpl(ApplicationDbContext dataDb, IMapper mapper, IQuizRepository quizRepository) : base(dataDb)
+        public QuestionRepositoryImpl(QuizAppDbContext dataDb, IMapper mapper, IQuizRepository quizRepository) : base(dataDb)
         {
             _dataDb = dataDb;
             _mapper = mapper;
